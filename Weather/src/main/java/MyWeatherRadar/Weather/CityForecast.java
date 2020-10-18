@@ -2,7 +2,7 @@ package weather.ipma_client;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
+import java.util.*;
 /**
  * the data point with the forecast for a city in a day
  */
@@ -36,6 +36,7 @@ public class CityForecast {
     @Expose
     private String latitude;
 
+
     public String getPrecipitaProb() {
         return precipitaProb;
     }
@@ -44,6 +45,16 @@ public class CityForecast {
         this.precipitaProb = precipitaProb;
     }
 
+    public TreeMap<String,String> getAllData(){
+        TreeMap<String,String> Lista = new TreeMap<String,String>();
+        Lista.put("Temperatura max: ",tMax);
+        Lista.put("Prob de Precipitaçao: ", precipitaProb);
+        Lista.put("Temperatura min: ",tMin);
+        Lista.put("Direção do vento: ",predWindDir);
+        Lista.put("Velocidade do vento: ",String.valueOf(classWindSpeed));
+        Lista.put("Dia: ", forecastDate);
+        return Lista;
+    }
     public String getTMin() {
         return tMin;
     }
